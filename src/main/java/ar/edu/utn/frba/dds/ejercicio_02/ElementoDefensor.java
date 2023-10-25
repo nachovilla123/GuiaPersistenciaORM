@@ -1,4 +1,7 @@
 package ar.edu.utn.frba.dds.ejercicio_02;
 
-public class ElementoDefensor {
+public interface ElementoDefensor {
+
+  public void defender(Personaje personaje);
+
 }
