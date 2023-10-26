@@ -1,7 +1,19 @@
 package ar.edu.utn.frba.dds.ejercicio_02;
 
-public interface ElementoDefensor {
 
-  public void defender(Personaje personaje);
+import javax.persistence.*;
+
+@Entity
+@Table(name = "elemento_defensor")
+@DiscriminatorColumn(name = "tipo_elemento")
+public abstract class ElementoDefensor {
+
+  @Id
+  @GeneratedValue
+  private Long id;
+
+  public void defender(Personaje personaje) {
+
+  }
 
 }

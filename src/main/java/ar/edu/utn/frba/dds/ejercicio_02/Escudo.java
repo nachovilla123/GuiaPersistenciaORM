@@ -1,8 +1,11 @@
 package ar.edu.utn.frba.dds.ejercicio_02;
 
-public class Escudo implements ElementoDefensor{
+import javax.persistence.DiscriminatorValue;
+
+@DiscriminatorValue("Escudo")
+public class Escudo extends ElementoDefensor{
   @Override
   public void defender(Personaje personaje) {
-
+    //TODO.
   }
 }
