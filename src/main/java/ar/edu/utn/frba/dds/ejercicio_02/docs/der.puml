@@ -1,0 +1,52 @@
+@startuml
+
+
+
+entity ElementoDefensor {
+PK id_elemento_defensor
+Varchar(255) nombre
+}
+
+entity Personaje {
+PK BigInt id
+TipoDePersonaje varchar(31)
+Int estamina
+Int puntosDeVida
+Int nivel_siniestro
+Boolean tiene_navaja
+Int nivel_de_magia
+Boolean posee_alas
+}
+
+entity  jugador {
+PK BigInt id
+FK BigInt personaje_id
+Varchar(255) apellido
+Date fecha_alta
+Varchar(255) nombre
+}
+
+entity elementosdefensoresdelpersonaje {
+FK BigInt id_personaje
+FK BigInt id_elemento
+}
+
+''-------------------- DEFINICION DE  RELACIONES -------------------''
+
+''  UNO A MUCHOS : uno ||--o{ muchos           ''
+
+'' MUCHOS A UNO : muchos }o--|| uno             ''
+
+'' UNO A UNO : uno }o--|| uno                   ''
+
+'' MUCHOS A MUCHOS : ROMPEMOS!! NOS QUEDA : '' MUCHOS A UNO : muchos }o--|| uno  Y '' UNO A MUCHOS : uno ||--o{ muchos
+'' siendo ese UNO la tabla intermedia. ej: JugadorXPartido
+
+
+
+jugador ||--|| Personaje
+
+Personaje ||--o{ elementosdefensoresdelpersonaje
+
+elementosdefensoresdelpersonaje  }o--|| ElementoDefensor
+@enduml

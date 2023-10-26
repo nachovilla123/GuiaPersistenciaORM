@@ -16,4 +16,8 @@ public abstract class ElementoDefensor {
 
   }
 
+  public ElementoDefensor(){
+
+  }
+
 }

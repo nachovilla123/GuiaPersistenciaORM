@@ -29,7 +29,8 @@ public class Jugador {
   @Column(name = "fecha_alta")
   private LocalDate fechaAlta;      //USAMOS EL LocalDateConverter aca, porque tiene autoaply
 
-  @Column(name = "personaje")
+  @OneToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name = "personaje_id", referencedColumnName = "id")
   private Personaje personaje;
 
   public Jugador() {
