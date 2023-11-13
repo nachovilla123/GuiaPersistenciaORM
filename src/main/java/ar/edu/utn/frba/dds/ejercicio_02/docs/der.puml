@@ -23,7 +23,7 @@ PK BigInt id
 FK BigInt personaje_id
 Varchar(255) apellido
 Date fecha_alta
-Varchar(255) nombre
+Varchar(255) nombre|xx|
 }
 
 entity elementosdefensoresdelpersonaje {

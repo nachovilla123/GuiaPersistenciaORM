@@ -1,0 +1,108 @@
+@startuml
+
+
+Entity Persona{
+    ID : Long
+    Nombre : String
+    Apellido : String
+    Edad : Integer
+    Sexo : String
+    MedioDeNotificacion : MedioDeNotificacion
+}
+
+Entity MedioDeNotificacion{
+    ID : Long
+    Nombre : String
+}
+
+Entity NecesidadDeTraduccion{
+    ID : Long
+    PersonaSolicitante : Persona
+    Descripcion : String
+    DocumentoATraducir : Archivo
+    IdiomaATraducir : Idioma
+    NivelDeConfidencialidad : NivelDeConfidencialidad
+    TagAsignado : Tag
+    Traduccion : Traduccion
+    TraductorAsignado : Traductor
+}
+
+Entity Tag{
+    ID : Long
+    Nombre : String
+}
+
+Enum NivelDeConfidencialidad{
+    Alto
+    Medio
+    Bajo
+}
+
+Entity Archivo{
+    ID : Long
+    cantidadDePaginas : Double
+    IdiomaFuente : Idioma
+    Contenido : String
+}
+
+Entity Idioma{
+    ID : Long
+    Nombre : String
+}
+
+Entity Traductor{
+    ID : Long
+    Nombre : String
+
+}
+
+Entity Presupuesto{
+    ID : Long
+    Traduccion : Traduccion
+    Precio : Double
+    FechaDeEntrega : Date
+    Traductor : Traductor
+    ValidezDePropuesta : Date
+    ComentarioExtra: String
+}
+
+Entity Traduccion{
+    ID : Long
+    NecesidadDeTraduccion : NecesidadDeTraduccion
+    ArchivoTraducido : Archivo
+    Presupuesto : Presupuesto
+}
+
+Entity NecesidadDeTraduccionXTag{
+    NecesidadDeTraduccion : NecesidadDeTraduccion
+    Tag : Tag
+}
+
+Entity MensajeDeNotificacion{
+    ID : Long
+    Persona : Persona
+    FechaDeEnvio : Date
+    Mensaje : String
+}
+
+Persona ||--o{ MensajeDeNotificacion
+Persona }o--|| MedioDeNotificacion
+NivelDeConfidencialidad ||--o{ NecesidadDeTraduccion
+NecesidadDeTraduccion ||--o{ NecesidadDeTraduccionXTag
+Tag ||--o{ NecesidadDeTraduccionXTag
+NecesidadDeTraduccion ||--|| Archivo
+Archivo }o--|| Idioma
+NecesidadDeTraduccion }o--|| Idioma
+Persona ||--o{ NecesidadDeTraduccion
+NecesidadDeTraduccion ||--|| Traduccion
+Traductor ||--o{ Presupuesto
+Traduccion ||--|| Presupuesto
+Traduccion ||--|| Archivo
+Traductor ||--o{ NecesidadDeTraduccion
+
+@enduml
+
+el nivel de urgencia (puede ser alto, medio o bajo);
+y el nivel de confidencialidad (puede ser muy alto, alto, medio o bajo). Además, también se deberán escoger
+las distintas etiquetas (o “tags”) que acompañarán a esta necesidad de traducción para facilitar la búsqueda
+por filtros por parte de los traductores
