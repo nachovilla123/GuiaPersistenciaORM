@@ -20,12 +20,10 @@ public abstract class Personaje {
   @GeneratedValue
   private Long id;
 
-  @ManyToMany
-  @JoinTable(
-      name = "elementosDefensoresDelPersonaje",
-      joinColumns = @JoinColumn(name = "id_personaje", referencedColumnName = "id"),
-      inverseJoinColumns = @JoinColumn(name = "id_elemento", referencedColumnName = "id")
-  )
+  @ElementCollection
+  @CollectionTable(name = "ElementoDefensor")
+  @Convert(converter = ElementoDefensorConverter.class)
+  @Column(name = "elemento")
   private List<ElementoDefensor> elementos;
 
   @Column(name = "estamina")

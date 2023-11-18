@@ -46,7 +46,7 @@ public class Instanciado_ej_02 {
     nachoBorda.setPersonaje(maBorda);
 
     Jugador nachoVilla = new Jugador();
-    nachoVilla.setApellido("Borda");
+    nachoVilla.setApellido("Villa");
     nachoVilla.setFechaAlta(LocalDate.now());
     nachoVilla.setNombre("Nacho");
     nachoVilla.setPersonaje(ladrILLA);
@@ -58,10 +58,6 @@ public class Instanciado_ej_02 {
     EntityManager em = PerThreadEntityManagers.getEntityManager();
     EntityTransaction tx = em.getTransaction();
     tx.begin();
-
-    em.persist(arco);
-    em.persist(escudo);
-    em.persist(espada);
 
     em.persist(nachoVilla);
     em.persist(nachoBorda);
