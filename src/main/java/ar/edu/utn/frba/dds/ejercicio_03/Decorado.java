@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public abstract class Decorado {
+public abstract class Decorado extends Producto{
 
   protected Producto producto;
 

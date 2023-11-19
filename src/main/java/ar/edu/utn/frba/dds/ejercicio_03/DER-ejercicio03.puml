@@ -1,0 +1,14 @@
+@startuml
+
+entity Producto {
+    idProducto : Long <PK>
+    --
+    nombre : varchar(250)
+    precio : Double
+    stock : Int
+    tipoProducto : char(10)
+}
+
+
+
+@enduml
