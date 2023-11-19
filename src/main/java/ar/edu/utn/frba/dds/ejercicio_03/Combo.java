@@ -3,8 +3,7 @@ package ar.edu.utn.frba.dds.ejercicio_03;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,7 +16,10 @@ import java.util.stream.Collectors;
 public class Combo extends Producto {
 
 
-
+@ManyToMany
+@JoinTable(name = "Combo_X_Producto",
+    joinColumns = @JoinColumn(name = "combo_id", referencedColumnName = "id"),
+    inverseJoinColumns = @JoinColumn(name = "producto_id", referencedColumnName = "id"))
   private List<Producto> productos;
 
   public Double precio(){

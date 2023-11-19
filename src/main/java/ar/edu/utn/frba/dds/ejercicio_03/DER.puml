@@ -1,0 +1,31 @@
+@startuml
+
+
+entity Producto{
+    ID_Producto  Long   <<PK>>
+    ID_Decorador Long   <<FK>>
+    Tipo         varchar(255)
+    Marca        varchar(255)
+    Nombre       varchar(255)
+    Precio       double
+    Stock        int
+    Valor        int
+}
+
+entity Combo_X_Producto{
+    ID_Combo Long <<FK>>
+    ID_Producto Long <<FK>>
+}
+
+
+Producto ||--o{ Combo_X_Producto
+Producto ||--o{ Combo_X_Producto
+Producto ||--o{ Producto
+
+@enduml
+
+Aclaraciones:
+
+Producto ||--o{ Combo_X_Producto -> Esta relación se usa para tener la FK del combo que tiene la lista de productos
+Producto ||--o{ Combo_X_Producto -> Esta relación hace referencia a los productos que componen los productos del combo
+Producto ||--o{ Producto --> Esta relación es para el Decorator, el producto del decorator, puede tener 1 producto y puede haber 1 producto que este en muchos decorator.

@@ -1,8 +1,6 @@
 package ar.edu.utn.frba.dds;
 
-import ar.edu.utn.frba.dds.ejercicio_03.Combo;
-import ar.edu.utn.frba.dds.ejercicio_03.Producto;
-import ar.edu.utn.frba.dds.ejercicio_03.ProductoSimple;
+import ar.edu.utn.frba.dds.ejercicio_03.*;
 import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
 
 import javax.persistence.EntityManager;
@@ -41,7 +39,17 @@ public class InstanciadoParaProbarEnDBMySQL {
     ComboHamburguesaConPapasYBebida.addProducto(hamburguesa, papas, coca);
 
 
+    DescuentoFijo descuentoFijo = new DescuentoFijo();
+    descuentoFijo.setNombre("DescuentoFijo");
+    descuentoFijo.setMarca("DescuentoFijo");
+    descuentoFijo.setValor(100.0);
+    descuentoFijo.setProducto(ComboHamburguesaConPapasYBebida);
 
+    Packaging packagingDeHamburguesa = new Packaging();
+    packagingDeHamburguesa.setNombre("Packaging de Hamburguesa");
+    packagingDeHamburguesa.setMarca("Packaging de Hamburguesa PREMIUM");
+    packagingDeHamburguesa.setPrecio(50.0);
+    packagingDeHamburguesa.setProducto(hamburguesa);
 
 
     EntityManager em = PerThreadEntityManagers.getEntityManager();
@@ -52,6 +60,8 @@ public class InstanciadoParaProbarEnDBMySQL {
     em.persist(hamburguesa);
     em.persist(papas);
     em.persist(ComboHamburguesaConPapasYBebida);
+    em.persist(descuentoFijo);
+    em.persist(packagingDeHamburguesa);
 
 
     tx.commit();

@@ -13,11 +13,16 @@ import javax.persistence.*;
 @DiscriminatorColumn(name = "tipo")
 public abstract class Producto {
 
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  @Column(name = "id")
+  protected Long id;
+
   @Column(name = "nombre")
-  private String nombre;
+  protected String nombre;
 
   @Column(name = "marca")
-  private String marca;
+  protected String marca;
 
   public Producto() {
 
